@@ -57,14 +57,14 @@ class server_process extends Thread {
             }
         } catch (IOException e) { // 用户关闭客户端造成此异常，关闭该用户套接字。
             String leaveUser = closeSocket();
-            log("用户 " + leaveUser + " 已经退出。" );
+            log("User " + leaveUser + " has logged out" );
             try {
                 freshClientsOnline();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
             System.out.println("[SYSTEM] " + leaveUser + " leave chatroom!");
-            sendAll("talk|[系统]" + leaveUser + "离开了聊天室");
+            sendAll("talk|[System]" + leaveUser + " has left the chatroom");
         }
     }
 
@@ -83,10 +83,10 @@ class server_process extends Thread {
             }
         } catch (FileNotFoundException fn) {
             System.out.println("[ERROR] User File has not exist!" + fn);
-            out.println("warning|读写文件时出错!");
+            out.println("warning|Error in reading/writing files");
         } catch (IOException ie) {
             System.out.println("[ERROR] " + ie);
-            out.println("warning|读写文件时出错!");
+            out.println("warning|Error in reading/writing files!");
         }
         return false;
     }
@@ -106,10 +106,10 @@ class server_process extends Thread {
             }
         } catch (FileNotFoundException fn) {
             System.out.println("[ERROR] User File has not exist!" + fn);
-            out.println("warning|读写文件时出错!");
+            out.println("warning|Error in reading/writing files!");
         } catch (IOException ie) {
             System.out.println("[ERROR] " + ie);
-            out.println("warning|读写文件时出错!");
+            out.println("warning|Error in reading/writing files!");
         }
         return false;
     }
@@ -121,13 +121,13 @@ class server_process extends Thread {
 
         if (isExistUser(name)) {
             System.out.println("[ERROR] " + name + " Register fail!");
-            out.println("warning|该用户已存在，请改名!");
+            out.println("warning|This username has been taken, please change something else");
         } else {
             @SuppressWarnings("resource")
             RandomAccessFile userFile = new RandomAccessFile(USERLIST_FILE, "rw");
             userFile.seek(userFile.length()); // 在文件尾部加入新用户信息
             userFile.writeBytes(name + "|" + password + "\r\n");
-            log("用户 " + name + " 注册成功。" );
+            log("User " + name + " successfully created" );
             userLoginSuccess(name); // 自动登陆聊天室
         }
     }
@@ -138,13 +138,13 @@ class server_process extends Thread {
         String password = st.nextToken().trim();// 得到用户密码
         boolean succeed = false;
 
-        log("用户 " + name + " 正在登陆..." + "\n" + "密码 : " + password );
+        log("User " + name + " logging..." + "\n" + "Password : " + password );
         System.out.println("[USER LOGIN] " + name + ":" + password + ":" + socket);
 
         for (int i = 0; i < onlineUser.size(); i++) {
             if (onlineUser.elementAt(i).equals(name)) {
                 System.out.println("[ERROR] " + name + " is logined!");
-                out.println("warning|" + name + "已经登陆聊天室");
+                out.println("warning|" + name + " has logged in");
             }
         }
         if (isUserLogin(name, password)) { // 判断用户名和密码
@@ -152,8 +152,8 @@ class server_process extends Thread {
             succeed = true;
         }
         if (!succeed) {
-            out.println("warning|" + name + "登陆失败，请检查您的输入!");
-            log("用户 " + name + " 登陆失败！");
+            out.println("warning|" + name + "Log failed, please check your account or password");
+            log("User " + name + " log failed！");
             System.out.println("[SYSTEM] " + name + " login fail!");
         }
     }
@@ -168,10 +168,10 @@ class server_process extends Thread {
         onlineUser.addElement(name);
         socketUser.addElement(socket);
 
-        log("用户 " + name + " 登录成功， " + "\n登录时间:" + t.toLocaleString());
+        log("User " + name + " logged successfully " + "\nTime spent:" + t.toLocaleString());
 
         freshClientsOnline();
-        sendAll("talk|[系统]欢迎" + name + "来到聊天室");
+        sendAll("talk|[System] Welcome" + name + "into the room");
         System.out.println("[SYSTEM] " + name + " login succeed!");
     }
 
@@ -187,25 +187,25 @@ class server_process extends Thread {
         // 得到当前时间
         String strTime = getTime();
 
-        log("用户 " + strSender + " 对  " + strReceiver + " 说: " + strTalkInfo);
+        log("User " + strSender + " said to  " + strReceiver + " : " + strTalkInfo);
 
         if (strReceiver.equals("All")) {
             sendAll("talk|" + strSender + " " + strTime + " : " + strTalkInfo);
         } else {
             if (strSender.equals(strReceiver)) {
-                out.println("talk|[系统]不可以自言自语！");
+                out.println("talk|[System] Please do not speak to yourself");
             } else {
                 for (int i = 0; i < onlineUser.size(); i++) {
                     if (strReceiver.equals(onlineUser.elementAt(i))) {
                         socketSend = (Socket) socketUser.elementAt(i);
                         outSend = new PrintWriter(
                                 new BufferedWriter(new OutputStreamWriter(socketSend.getOutputStream())), true);
-                        outSend.println("talk|[私聊]" + strSender + " " + strTime + "：" + strTalkInfo);
+                        outSend.println("talk|[secret msg]" + strSender + " " + strTime + "：" + strTalkInfo);
                     } else if (strSender.equals(onlineUser.elementAt(i))) {
                         socketSend = (Socket) socketUser.elementAt(i);
                         outSend = new PrintWriter(
                                 new BufferedWriter(new OutputStreamWriter(socketSend.getOutputStream())), true);
-                        outSend.println("talk|[私聊]" + strReceiver + " " + strTime + "：" + strTalkInfo);
+                        outSend.println("talk|[secret msg]" + strReceiver + " " + strTime + "：" + strTalkInfo);
                     }
                 }
             }
@@ -256,13 +256,13 @@ class server_process extends Thread {
         // 得到当前时间
         String strTime = getTime();
 
-        log("用户 " + strSender + " 对  " + strReceiver + " 说: " + strExpression);
+        log("User " + strSender + " said to  " + strReceiver + " : " + strExpression);
 
         if (strReceiver.equals("All")) {
             sendAll("expression|" + strSender + " " + strTime + " : " + "|" + strExpression + "|");
         } else {
             if (strSender.equals(strReceiver)) {
-                out.println("talk|[系统]不可以自言自语！");
+                out.println("talk|[System] Do not speak to yourself.");
             } else {
                 for (int i = 0; i < onlineUser.size(); i++) {
                     if (strReceiver.equals(onlineUser.elementAt(i))) {
@@ -270,13 +270,13 @@ class server_process extends Thread {
                         outSend = new PrintWriter(
                                 new BufferedWriter(new OutputStreamWriter(socketSend.getOutputStream())), true);
                         outSend.println(
-                                "expression|[私聊]" + strSender + " " + strTime + "：" + "|" + strExpression + "|");
+                                "expression|[secret msg]" + strSender + " " + strTime + "：" + "|" + strExpression + "|");
                     } else if (strSender.equals(onlineUser.elementAt(i))) {
                         socketSend = (Socket) socketUser.elementAt(i);
                         outSend = new PrintWriter(
                                 new BufferedWriter(new OutputStreamWriter(socketSend.getOutputStream())), true);
                         outSend.println(
-                                "expression|[私聊]" + strReceiver + " " + strTime + "：" + "|" + strExpression + "|");
+                                "expression|[secret msg]" + strReceiver + " " + strTime + "：" + "|" + strExpression + "|");
                     }
                 }
             }
@@ -288,7 +288,7 @@ class server_process extends Thread {
         String strPicture = st.nextToken(); // 得到聊天内容;
         String strSender = st.nextToken(); // 得到发消息人
         String strReceiver = st.nextToken(); // 得到接收人
-        System.out.println("[SendPicture_" + strReceiver + "] 发送图片");
+        System.out.println("[SendPicture_" + strReceiver + "] Send images");
         Socket socketSend;
         PrintWriter outSend;
         new Date();
@@ -296,25 +296,25 @@ class server_process extends Thread {
         // 得到当前时间
         String strTime = getTime();
 
-        log("用户 " + strSender + " 对  " + strReceiver + " 发送了图片 ");
+        log("User " + strSender + " sent  " + strReceiver + " images ");
 
         if (strReceiver.equals("All")) {
             sendAll("picture|" + strSender + " " + strTime + " : " + "|" + strPicture + "|");
         } else {
             if (strSender.equals(strReceiver)) {
-                out.println("talk|[系统]不可以自言自语！");
+                out.println("talk|[System]Do not speak to yourself.");
             } else {
                 for (int i = 0; i < onlineUser.size(); i++) {
                     if (strReceiver.equals(onlineUser.elementAt(i))) {
                         socketSend = (Socket) socketUser.elementAt(i);
                         outSend = new PrintWriter(
                                 new BufferedWriter(new OutputStreamWriter(socketSend.getOutputStream())), true);
-                        outSend.println("picture|[私聊]" + strSender + " " + strTime + "：" + "|" + strPicture + "|");
+                        outSend.println("picture|[secret msg]" + strSender + " " + strTime + "：" + "|" + strPicture + "|");
                     } else if (strSender.equals(onlineUser.elementAt(i))) {
                         socketSend = (Socket) socketUser.elementAt(i);
                         outSend = new PrintWriter(
                                 new BufferedWriter(new OutputStreamWriter(socketSend.getOutputStream())), true);
-                        outSend.println("picture|[私聊]" + strReceiver + " " + strTime + "：" + "|" + strPicture + "|");
+                        outSend.println("picture|[secret msg]" + strReceiver + " " + strTime + "：" + "|" + strPicture + "|");
                     }
                 }
             }
@@ -367,12 +367,12 @@ class server_process extends Thread {
         String strSender = st.nextToken(); // 得到发消息人
         String strReceiver = st.nextToken(); // 得到接收人
         System.out.println("[PRINT_" + strReceiver + "] " + strTalkInfo);
-        log("用户 " + strSender + " 对  " + strReceiver + " 说: " + strTalkInfo);
+        log("User " + strSender + " said to  " + strReceiver + " : " + strTalkInfo);
 
         if (strReceiver.equals("All")) {
             sendAll("printPort|" + strTalkInfo);
         } else {
-            out.println("talk|[系统]即时画图出现错误！");
+            out.println("talk|[System] Some error happened during the real-time drawing");
         }
     }
 
@@ -382,12 +382,12 @@ class server_process extends Thread {
         String strSender = st.nextToken(); // 得到发消息人
         String strReceiver = st.nextToken(); // 得到接收人
         System.out.println("[PRINT_" + strReceiver + "] " + strTalkInfo);
-        log("用户 " + strSender + " 对  " + strReceiver + " 说: " + strTalkInfo);
+        log("User " + strSender + " said to " + strReceiver + " : " + strTalkInfo);
 
         if (strReceiver.equals("All")) {
             sendAll("sendPort|" + strTalkInfo);
         } else {
-            out.println("talk|[系统]即时画图出现错误！");
+            out.println("talk|[System] Errors happened during real-time drawing");
         }
     }
 
