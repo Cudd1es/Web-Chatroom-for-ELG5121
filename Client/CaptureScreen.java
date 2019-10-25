@@ -1,8 +1,8 @@
 //package Client;
 
 /**
- * CaptureScreen.java
- */
+* CaptureScreen.java
+*/
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -12,9 +12,6 @@ import javax.imageio.*;
 import java.awt.image.*;
 
 public class CaptureScreen extends JFrame implements ActionListener {
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 	private JButton start, cancel;
 	private JPanel c;
@@ -25,7 +22,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
 
 	/** Creates a new instance of CaptureScreen */
 	public CaptureScreen() {
-		super("��Ļ��ȡ");
+		super("Screenshot");
 		this.setResizable(false);
 		initWindow();
 		initOther();
@@ -36,10 +33,10 @@ public class CaptureScreen extends JFrame implements ActionListener {
 	}
 
 	private void initWindow() {
-		start = new JButton("��ʼ��ȡ");
+		start = new JButton("Screenshot started");
 		start.setFocusPainted(false);
 		start.addActionListener(this);
-		cancel = new JButton("�˳�����");
+		cancel = new JButton("Exit");
 		cancel.setFocusPainted(false);
 		cancel.addActionListener(this);
 		JPanel buttonJP = new JPanel();
@@ -47,10 +44,10 @@ public class CaptureScreen extends JFrame implements ActionListener {
 		c = new JPanel(new BorderLayout());
 		c.setBackground(new Color(135, 206, 235));
 		c.setBounds(500, 300, 100, 100);
-		JLabel jl = new JLabel("MiniQQ��������", JLabel.CENTER);
-		JLabel jl1 = new JLabel("��ʾ��˫��ѡ���������б����Ȳ���", JLabel.CENTER);
-		jl.setFont(new Font("΢���ź�", Font.BOLD, 40));
-		jl1.setFont(new Font("΢���ź�", Font.BOLD, 14));
+		JLabel jl = new JLabel("Screenshot Program", JLabel.CENTER);
+		JLabel jl1 = new JLabel("Double click on the area to save.", JLabel.CENTER);
+		jl.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		jl1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		jl.setForeground(Color.BLACK);
 		jl1.setForeground(Color.BLACK);
 		c.add(jl, BorderLayout.CENTER);
@@ -82,7 +79,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
 
 			}
 			PicPanel pic = new PicPanel(get);
-			jtp.addTab("ͼƬ" + (++index), pic);
+			jtp.addTab("Picture" + (++index), pic);
 			jtp.setSelectedComponent(pic);
 			SwingUtilities.updateComponentTreeUI(c);
 		}
@@ -109,12 +106,10 @@ public class CaptureScreen extends JFrame implements ActionListener {
 		}
 	}
 
-	/**
-	 */
 	public void doSave(BufferedImage get) {
 		try {
 			if (get == null) {
-				JOptionPane.showMessageDialog(this, "ͼƬ����Ϊ��!!", "����", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Image should be specified!", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			JFileChooser jfc = new JFileChooser(".");
@@ -154,9 +149,9 @@ public class CaptureScreen extends JFrame implements ActionListener {
 					}
 				}
 				if (ImageIO.write(get, about, file)) {
-					JOptionPane.showMessageDialog(this, "�����ɹ���");
+					JOptionPane.showMessageDialog(this, "Saved successfully!");
 				} else
-					JOptionPane.showMessageDialog(this, "����ʧ�ܣ�");
+				JOptionPane.showMessageDialog(this, "Failed to save!");
 			}
 		} catch (Exception exe) {
 			exe.printStackTrace();
@@ -179,9 +174,6 @@ public class CaptureScreen extends JFrame implements ActionListener {
 	}
 
 	private class PicPanel extends JPanel implements ActionListener {
-		/**
-		 *
-		 */
 		private static final long serialVersionUID = 1L;
 		JButton save, close;
 		BufferedImage get;
@@ -193,10 +185,10 @@ public class CaptureScreen extends JFrame implements ActionListener {
 		}
 
 		private void initPanel() {
-			save = new JButton("����(S)");
+			save = new JButton("Save (S)");
 			save.setFocusPainted(false);
 
-			close = new JButton("�ر�(X)");
+			close = new JButton("Exit (X)");
 			close.setFocusPainted(false);
 			close.setMnemonic('S');
 			close.setMnemonic('X');
@@ -230,11 +222,11 @@ public class CaptureScreen extends JFrame implements ActionListener {
 			if (file.toString().toLowerCase().endsWith(".bmp") || file.isDirectory()) {
 				return true;
 			} else
-				return false;
+			return false;
 		}
 
 		public String getDescription() {
-			return "*.BMP(BMPͼ��)";
+			return "*.BMP(BMP Image)";
 		}
 	}
 
@@ -246,11 +238,11 @@ public class CaptureScreen extends JFrame implements ActionListener {
 			if (file.toString().toLowerCase().endsWith(".jpg") || file.isDirectory()) {
 				return true;
 			} else
-				return false;
+			return false;
 		}
 
 		public String getDescription() {
-			return "*.JPG(JPGͼ��)";
+			return "*.JPG(JPG Image)";
 		}
 	}
 
@@ -262,11 +254,11 @@ public class CaptureScreen extends JFrame implements ActionListener {
 			if (file.toString().toLowerCase().endsWith(".gif") || file.isDirectory()) {
 				return true;
 			} else
-				return false;
+			return false;
 		}
 
 		public String getDescription() {
-			return "*.GIF(GIFͼ��)";
+			return "*.GIF(GIF Image)";
 		}
 	}
 
@@ -275,18 +267,15 @@ public class CaptureScreen extends JFrame implements ActionListener {
 			if (file.toString().toLowerCase().endsWith(".png") || file.isDirectory()) {
 				return true;
 			} else
-				return false;
+			return false;
 		}
 
 		public String getDescription() {
-			return "*.PNG(PNGͼ��)";
+			return "*.PNG(PNG Image)";
 		}
 	}
 
 	private class Temp extends JPanel implements MouseListener, MouseMotionListener {
-		/**
-		 *
-		 */
 		private static final long serialVersionUID = 1L;
 		private BufferedImage bi;
 		private int width, height;
@@ -355,49 +344,49 @@ public class CaptureScreen extends JFrame implements ActionListener {
 				g.setColor(Color.RED);
 				g.drawRect(p.x, p.y, 170, 20);
 				g.setColor(Color.BLACK);
-				g.drawString("�밴ס������������ѡ����ͼ��", p.x, p.y + 15);
+				g.drawString("Hold the cursor to select the zone of the screenshot!", p.x, p.y + 15);
 			}
 		}
 
 		private void initSelect(States state) {
 			switch (state) {
-			case DEFAULT:
+				case DEFAULT:
 				currentX = 0;
 				currentY = 0;
 				break;
-			case EAST:
+				case EAST:
 				currentX = (endX > startX ? END_X : START_X);
 				currentY = 0;
 				break;
-			case WEST:
+				case WEST:
 				currentX = (endX > startX ? START_X : END_X);
 				currentY = 0;
 				break;
-			case NORTH:
+				case NORTH:
 				currentX = 0;
 				currentY = (startY > endY ? END_Y : START_Y);
 				break;
-			case SOUTH:
+				case SOUTH:
 				currentX = 0;
 				currentY = (startY > endY ? START_Y : END_Y);
 				break;
-			case NORTH_EAST:
+				case NORTH_EAST:
 				currentY = (startY > endY ? END_Y : START_Y);
 				currentX = (endX > startX ? END_X : START_X);
 				break;
-			case NORTH_WEST:
+				case NORTH_WEST:
 				currentY = (startY > endY ? END_Y : START_Y);
 				currentX = (endX > startX ? START_X : END_X);
 				break;
-			case SOUTH_EAST:
+				case SOUTH_EAST:
 				currentY = (startY > endY ? START_Y : END_Y);
 				currentX = (endX > startX ? END_X : START_X);
 				break;
-			case SOUTH_WEST:
+				case SOUTH_WEST:
 				currentY = (startY > endY ? START_Y : END_Y);
 				currentX = (endX > startX ? START_X : END_X);
 				break;
-			default:
+				default:
 				currentX = 0;
 				currentY = 0;
 				break;
@@ -464,7 +453,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
 					tempY = y;
 				}
 			} else if (current == States.NORTH_EAST || current == States.NORTH_EAST || current == States.SOUTH_EAST
-					|| current == States.SOUTH_WEST) {
+			|| current == States.SOUTH_WEST) {
 				if (currentY == START_Y) {
 					startY += (y - tempY);
 					tempY = y;
@@ -495,7 +484,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
 		}
 
 		public void mouseReleased(MouseEvent me) {
-			if (me.isPopupTrigger()) { // �Ҽ�
+			if (me.isPopupTrigger()) {
 				if (current == States.MOVE) {
 					showTip = true;
 					p = me.getPoint();
@@ -504,7 +493,7 @@ public class CaptureScreen extends JFrame implements ActionListener {
 					endX = 0;
 					endY = 0;
 					repaint();
-				} else { // ��ͨ����
+				} else {
 					jf.dispose();
 					updates();
 				}
@@ -540,10 +529,10 @@ public class CaptureScreen extends JFrame implements ActionListener {
 enum States {
 	NORTH_WEST(new Cursor(Cursor.NW_RESIZE_CURSOR)),
 	NORTH(new Cursor(Cursor.N_RESIZE_CURSOR)), NORTH_EAST(new Cursor(Cursor.NE_RESIZE_CURSOR)), EAST(
-			new Cursor(Cursor.E_RESIZE_CURSOR)), SOUTH_EAST(new Cursor(Cursor.SE_RESIZE_CURSOR)), SOUTH(
-					new Cursor(Cursor.S_RESIZE_CURSOR)), SOUTH_WEST(new Cursor(Cursor.SW_RESIZE_CURSOR)), WEST(
-							new Cursor(Cursor.W_RESIZE_CURSOR)), MOVE(new Cursor(Cursor.MOVE_CURSOR)), DEFAULT(
-									new Cursor(Cursor.DEFAULT_CURSOR));
+	new Cursor(Cursor.E_RESIZE_CURSOR)), SOUTH_EAST(new Cursor(Cursor.SE_RESIZE_CURSOR)), SOUTH(
+	new Cursor(Cursor.S_RESIZE_CURSOR)), SOUTH_WEST(new Cursor(Cursor.SW_RESIZE_CURSOR)), WEST(
+	new Cursor(Cursor.W_RESIZE_CURSOR)), MOVE(new Cursor(Cursor.MOVE_CURSOR)), DEFAULT(
+	new Cursor(Cursor.DEFAULT_CURSOR));
 
 	private Cursor cs;
 
