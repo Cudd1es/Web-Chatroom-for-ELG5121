@@ -64,7 +64,7 @@ public class server_frame extends JFrame implements ActionListener {
         pnlServer.setLayout(null);
         pnlServer.setBackground(new Color(175, 175, 180));
 
-        lblLog = new JLabel("[server_log]");
+        lblLog = new JLabel("[server Log]");
         lblLog.setForeground(new Color(125, 125, 125));
         lblLog.setFont(new Font("Times New Roman", Font.BOLD, 15));
         taLog = new TextArea(20, 50);
@@ -117,7 +117,7 @@ public class server_frame extends JFrame implements ActionListener {
 
         // 主标签面板
         tpServer = new JTabbedPane(JTabbedPane.TOP);
-        tpServer.setBackground(new Color(255, 250, 250));
+        tpServer.setBackground(new Color(100, 125, 125));
         tpServer.setFont(new Font("Times New Roman", 0, 14));
 
         // 用户面板
@@ -149,7 +149,7 @@ public class server_frame extends JFrame implements ActionListener {
         pnlServerInfo.setBackground(new Color(175, 175, 180));
         pnlServerInfo.setFont(new Font("Times New Roman", 0, 12));
 
-        lblNumber = new JLabel("Quantity of Online Users:");
+        lblNumber = new JLabel("User(s) Online");
         lblNumber.setForeground(new Color(125, 125, 125));
         lblNumber.setFont(new Font("Times New Roman", Font.BOLD, 15));
         txtNumber = new JTextField("0", 10);

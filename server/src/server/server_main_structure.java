@@ -17,14 +17,14 @@ public class server_main_structure extends Thread {
             server_frame serverFrame = new server_frame();
             getServerIP(); // 得到并显示服务器端IP
             System.out.println("Server port is:" + SERVER_PORT);
-            serverFrame.taLog.setText("服务器已经启动...");
+            serverFrame.taLog.setText("Server started...");
             while (true) {
                 Socket socket = serverSocket.accept(); // 监听客户端的连接请求，并返回客户端socket
                 new server_process(socket, serverFrame); // 创建一个新线程来处理与该客户的通讯
             }
         } catch (BindException e) {
-            System.out.println("端口使用中....");
-            System.out.println("请关掉相关程序并重新运行服务器！");
+            System.out.println("Port occupied....");
+            System.out.println("Please kill the process and restart it");
             System.exit(0);
         } catch (IOException e) {
             System.out.println("[ERROR] Cound not start server." + e);
