@@ -50,8 +50,6 @@ import javax.swing.text.StyledDocument;
 
 public class ClientFrame extends JFrame implements ActionListener {
 
-	/**
-	 */
 	private static final long serialVersionUID = 1L;
 
 	protected static final String Client = null;
@@ -59,8 +57,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 	public static int printPort = 8800;
 	public static int sendPort = 3000;
 
-	/*
-	 */
 	JPanel pnlLogin;
 	JLabel lblServerIP, lblName, lblPassword;
 	JTextField txtServerIP, txtName;
@@ -70,8 +66,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 	Boolean isReg = true;
 	JDialog dialogLogin = new JDialog(this, "Login", true);
 
-	/*
-	 */
 	JFrame frame;
 	JPanel pnlBack, pnlTalk;
 	JButton butSend, butPic, butExpression;
@@ -86,14 +80,10 @@ public class ClientFrame extends JFrame implements ActionListener {
 	JScrollPane scrollPane = null;
 	JMenuItem sendFile, drawPicture, cleanText;
 
-	/*
-	 */
 	Socket socket = null;
 	BufferedReader in = null;
 	PrintWriter out = null;
 
-	/*
-	 */
 	String strSend, strReceive, strKey, strStatus;
 	String[] userList = new String[50];
 	BufferedImage bufferedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
@@ -105,8 +95,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 	private StyledDocument doc = null;
 	private JButton butScreenCapture;
 
-	/**
-	 */
 	public ClientFrame() {
 		userList[0] = "admin";
 		listModel.addElement("admin");
@@ -179,7 +167,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 				File file = f.getSelectedFile();
 				String picture = ClientTools.readPic(file);
 				out.println(
-						"picture|" + picture + "|" + txtName.getText() + "|" + listOnline.getSelectedItem().toString());
+				"picture|" + picture + "|" + txtName.getText() + "|" + listOnline.getSelectedItem().toString());
 				inputText.setText("");
 			}
 		});
@@ -205,72 +193,72 @@ public class ClientFrame extends JFrame implements ActionListener {
 		lenghan.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				out.println("expression|" + "lenghan.gif" + "|" + txtName.getText() + "|"
-						+ listOnline.getSelectedItem().toString());
+				+ listOnline.getSelectedItem().toString());
 				inputText.setText("");
 			}
 		});
 
 		fanu = new JButton();
-		fanu.setToolTipText("��ŭ");
+		fanu.setToolTipText("fanu");
 		fanu.setPreferredSize(new Dimension(32, 32));
 		fanu.setIcon(new ImageIcon("material\\fanu.gif"));
 		fanu.addActionListener(this);
 		fanu.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				out.println("expression|" + "fanu.gif" + "|" + txtName.getText() + "|"
-						+ listOnline.getSelectedItem().toString());
+				+ listOnline.getSelectedItem().toString());
 				inputText.setText("");
 			}
 		});
 
 		zaijian = new JButton();
-		zaijian.setToolTipText("�ټ�");
+		zaijian.setToolTipText("zaijian");
 		zaijian.setPreferredSize(new Dimension(32, 32));
 		zaijian.setIcon(new ImageIcon("material\\zaijian.gif"));
 		zaijian.addActionListener(this);
 		zaijian.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				out.println("expression|" + "zaijian.gif" + "|" + txtName.getText() + "|"
-						+ listOnline.getSelectedItem().toString());
+				+ listOnline.getSelectedItem().toString());
 				inputText.setText("");
 			}
 		});
 
 		weixiao = new JButton();
-		weixiao.setToolTipText("΢Ц");
+		weixiao.setToolTipText("weixiao");
 		weixiao.setPreferredSize(new Dimension(32, 32));
 		weixiao.setIcon(new ImageIcon("material\\weixiao.gif"));
 		weixiao.addActionListener(this);
 		weixiao.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				out.println("expression|" + "weixiao.gif" + "|" + txtName.getText() + "|"
-						+ listOnline.getSelectedItem().toString());
+				+ listOnline.getSelectedItem().toString());
 				inputText.setText("");
 			}
 		});
 
 		keai = new JButton();
-		keai.setToolTipText("�ɰ�");
+		keai.setToolTipText("keai");
 		keai.setPreferredSize(new Dimension(32, 32));
 		keai.setIcon(new ImageIcon("material\\keai.gif"));
 		keai.addActionListener(this);
 		keai.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				out.println("expression|" + "keai.gif" + "|" + txtName.getText() + "|"
-						+ listOnline.getSelectedItem().toString());
+				+ listOnline.getSelectedItem().toString());
 				inputText.setText("");
 			}
 		});
 
 		ku = new JButton();
-		ku.setToolTipText("��");
+		ku.setToolTipText("ku");
 		ku.setPreferredSize(new Dimension(32, 32));
 		ku.setIcon(new ImageIcon("material\\ku.gif"));
 		ku.addActionListener(this);
 		ku.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				out.println("expression|" + "ku.gif" + "|" + txtName.getText() + "|"
-						+ listOnline.getSelectedItem().toString());
+				+ listOnline.getSelectedItem().toString());
 				inputText.setText("");
 			}
 		});
@@ -345,13 +333,13 @@ public class ClientFrame extends JFrame implements ActionListener {
 		publicChatPanel = new JPanel();
 		publicChatPanel.setBackground(new Color(255, 215, 0));
 		publicChatPanel.setBorder(
-				new TitledBorder(null, "\u7FA4\u804A\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		new TitledBorder(null, "\u7FA4\u804A\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		publicChatPanel.setBounds(183, 31, 488, 332);
 		frame.getContentPane().add(publicChatPanel);
 
 		editPanel = new JPanel();
 		editPanel.setBorder(
-				new TitledBorder(null, "\u7F16\u8F91\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		new TitledBorder(null, "\u7F16\u8F91\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		editPanel.setBackground(new Color(255, 215, 0));
 		editPanel.setBounds(183, 408, 488, 53);
 		frame.getContentPane().add(editPanel);
@@ -375,8 +363,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 		ShowLoginInterface();
 	}
 
-	/*
-	 */
 	public void ShowLoginInterface() {
 		layout = new GridBagLayout();
 
@@ -420,8 +406,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 		dialogLogin.setVisible(true);
 	}
 
-	/*
-	 */
 	public void ShowRegInterface() {
 		JPanel pnlReg;
 		JLabel lblRegServerIP, lblRegName, lblRegPassword;
@@ -519,8 +503,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 		}
 	}
 
-	/*
-	 */
 	public void actionPerformed(ActionEvent evt) {
 		Object obj = evt.getSource();
 
@@ -541,7 +523,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 			} else if (obj.equals(butSend)) {
 				if (inputText.getText().length() > 0) {
 					out.println("talk|" + inputText.getText() + "|" + txtName.getText() + "|"
-							+ listOnline.getSelectedItem().toString());
+					+ listOnline.getSelectedItem().toString());
 					inputText.setText("");
 				}
 
@@ -602,8 +584,8 @@ public class ClientFrame extends JFrame implements ActionListener {
 							}
 						} else if (strKey.equals("sendPort")) {
 							try {
-//								sendPort = Integer.parseInt(st.nextToken());
-//								sendPort++;
+								//								sendPort = Integer.parseInt(st.nextToken());
+								//								sendPort++;
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -642,7 +624,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 									listOnline.removeItem(strRemove);
 									listModel.removeElement(strRemove);
 									userList[ClientTools.position(userList, strRemove, onlineNum)] = userList[onlineNum
-											- 1];
+									- 1];
 									onlineNum--;
 								}
 							}
@@ -660,8 +642,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 		}
 	}
 
-	/**
-	 */
 	public static void ClientFrameStarter() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

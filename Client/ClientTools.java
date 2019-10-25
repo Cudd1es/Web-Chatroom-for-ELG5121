@@ -14,12 +14,7 @@ import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
 
-/*
- */
 public class ClientTools {
-
-	/*
-	 */
 	public static String readPic(File file) {
 		BufferedImage image = new BufferedImage(50, 50, BufferedImage.TYPE_INT_RGB);
 		String pic = "";
@@ -41,8 +36,6 @@ public class ClientTools {
 		return pic;
 	}
 
-	/*
-	 */
 	public static void drawPicture(String picture,String location) {
 		try {
 			StringTokenizer st = new StringTokenizer(picture, ",");
@@ -73,8 +66,6 @@ public class ClientTools {
 
 	}
 
-	/*
-	 */
 	public static void insertIcon(File file, JTextPane textArea, StyledDocument doc) {
 		textArea.setCaretPosition(doc.getLength());
 		textArea.insertIcon(new ImageIcon(file.getPath()));
@@ -85,8 +76,6 @@ public class ClientTools {
 		}
 	}
 
-	/*
-	 */
 	public static int position(String[] strs, String s, int num) {
 		for (int i = 0; i < num; i++) {
 			if (strs[i].equals(s)) {
