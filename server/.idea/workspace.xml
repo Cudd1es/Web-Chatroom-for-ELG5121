@@ -24,7 +24,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -48,7 +48,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.server_main_structure">
+    <configuration name="server_frame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.server_frame" />
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="server_main_structure" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.server_main_structure" />
       <module name="server" />
@@ -65,6 +78,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.server_main_structure" />
+        <item itemvalue="Application.server_frame" />
       </list>
     </recent_temporary>
   </component>
@@ -81,7 +95,7 @@
       <workItem from="1571867079833" duration="3174000" />
       <workItem from="1571956259964" duration="90000" />
       <workItem from="1571956400689" duration="4418000" />
-      <workItem from="1571961685045" duration="362000" />
+      <workItem from="1571961685045" duration="4251000" />
     </task>
     <servers />
   </component>

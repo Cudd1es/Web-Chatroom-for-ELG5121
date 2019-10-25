@@ -18,7 +18,7 @@ class server_process extends Thread {
     private String strReceive, strKey;
     private StringTokenizer st;
 
-    private final String USERLIST_FILE = "resourse\\user.txt"; // 设定存放用户信息的文件
+    private final String USERLIST_FILE = "resourse/user.txt"; // 设定存放用户信息的文件
     private server_frame sFrame = null;
 
     public server_process(Socket client, server_frame frame) throws IOException {
@@ -171,7 +171,7 @@ class server_process extends Thread {
         log("User " + name + " logged successfully " + "\nTime spent:" + t.toLocaleString());
 
         freshClientsOnline();
-        sendAll("talk|[System] Welcome" + name + "into the room");
+        sendAll("talk|[System] Welcome " + name + "into the room");
         System.out.println("[SYSTEM] " + name + " login succeed!");
     }
 
