@@ -111,7 +111,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		userList[0] = "admin";
 		listModel.addElement("admin");
 
-		frame = new JFrame("miniQQ");
+		frame = new JFrame("Chat");
 		frame.setResizable(false);
 		frame.setBackground(new Color(255, 215, 0));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -292,7 +292,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		textArea.setEditable(false);
 		doc = textArea.getStyledDocument();
 
-		cleanText = new JMenuItem("����");
+		cleanText = new JMenuItem("Clear Text");
 		TextPopupMenu = new JPopupMenu();
 		TextPopupMenu.add(cleanText);
 		textArea.addMouseListener(new MouseAdapter() {
@@ -325,7 +325,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 			}
 		});
 
-		textArea.setFont(new Font("΢���ź�", Font.PLAIN, 13));
+		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		textArea.setBounds(193, 51, 467, 302);
 		textArea.setForeground(Color.blue);
 		frame.getContentPane().add(textArea);
@@ -335,7 +335,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		frame.getContentPane().add(scrollPane);
 
 		listOnline = new JComboBox<Object>();
-		listOnline.setFont(new Font("΢���ź�", Font.PLAIN, 13));
+		listOnline.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		listOnline.setForeground(new Color(255, 215, 0));
 		listOnline.setBackground(new Color(0, 0, 0));
 		listOnline.setBounds(504, 373, 72, 30);
@@ -357,7 +357,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		frame.getContentPane().add(editPanel);
 
 		lblTo = new JLabel("TO\uFF1A");
-		lblTo.setFont(new Font("΢���ź�", Font.PLAIN, 15));
+		lblTo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblTo.setBounds(463, 366, 44, 42);
 		frame.getContentPane().add(lblTo);
 
@@ -383,24 +383,24 @@ public class ClientFrame extends JFrame implements ActionListener {
 		pnlLogin = new JPanel();
 		pnlLogin.setLayout(layout);
 
-		lblServerIP = new JLabel("������IP��");
-		lblName = new JLabel("�û��ǳƣ�");
-		lblPassword = new JLabel("�û����룺");
+		lblServerIP = new JLabel("Server IP");
+		lblName = new JLabel("User Nickname: ");
+		lblPassword = new JLabel("User Password: ");
 		txtServerIP = new JTextField(12);
 		txtName = new JTextField(12);
 		txtPassword = new JPasswordField(12);
 		txtServerIP.setText("192.168.206.1");
 
-		btnLogin = new JButton("��½");
+		btnLogin = new JButton("Login");
 		btnLogin.setBackground(new Color(0, 0, 0));
 		btnLogin.setForeground(new Color(255, 215, 0));
-		btnLogin.setFont(new Font("΢���ź�", Font.BOLD, 13));
+		btnLogin.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		btnLogin.setFocusPainted(false);
 
-		btnReg = new JButton("ע��");
+		btnReg = new JButton("Signup");
 		btnReg.setBackground(new Color(0, 0, 0));
 		btnReg.setForeground(new Color(255, 215, 0));
-		btnReg.setFont(new Font("΢���ź�", Font.BOLD, 13));
+		btnReg.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		btnReg.setFocusPainted(false);
 
 		btnLogin.addActionListener(this);
@@ -429,24 +429,24 @@ public class ClientFrame extends JFrame implements ActionListener {
 		JPasswordField txtRegPassword;
 		JButton btnToReg;
 		GridBagLayout layout;
-		JDialog frameReg = new JDialog(this, "MiniQQע��", true);
+		JDialog frameReg = new JDialog(this, "Chat", true);
 		layout = new GridBagLayout();
 
 		pnlReg = new JPanel();
 		pnlReg.setLayout(layout);
 
-		lblRegServerIP = new JLabel("������IP��");
-		lblRegName = new JLabel("�����ǳƣ�");
-		lblRegPassword = new JLabel("�������룺");
+		lblRegServerIP = new JLabel("Server IP");
+		lblRegName = new JLabel("User Nickname: ");
+		lblRegPassword = new JLabel("User Password: ");
 		txtRegServerIP = new JTextField(12);
 		txtRegName = new JTextField(12);
 		txtRegPassword = new JPasswordField(12);
 		txtRegServerIP.setText("192.168.206.1");
 
-		btnToReg = new JButton("ע��");
+		btnToReg = new JButton("Signup");
 		btnToReg.setBackground(new Color(0, 0, 0));
 		btnToReg.setForeground(new Color(255, 215, 0));
-		btnToReg.setFont(new Font("΢���ź�", Font.BOLD, 13));
+		btnToReg.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		btnToReg.setFocusPainted(false);
 
 		btnToReg.addActionListener(new ActionListener() {
@@ -485,7 +485,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8")), true);
 		} catch (ConnectException e) {
-			JOptionPane.showMessageDialog(this, "���ӷ�����ʧ��!", "ERROE", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Failed to connect to server!", "ERROR", JOptionPane.INFORMATION_MESSAGE);
 			txtServerIP.setText("");
 			System.out.println(e);
 		} catch (Exception e) {
@@ -532,7 +532,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 					out.println(strSend);
 					initLogin();
 				} else {
-					popWindows("������������Ϣ", "ERROE");
+					popWindows("Incomplete Information!", "ERROR");
 				}
 
 			} else if (obj.equals(btnReg)) {
