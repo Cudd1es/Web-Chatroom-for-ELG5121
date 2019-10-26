@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
 
+
 // The Server UI.
 public class server_frame extends JFrame implements ActionListener {
     /**

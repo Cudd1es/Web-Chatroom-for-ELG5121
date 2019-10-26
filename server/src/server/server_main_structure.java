@@ -3,6 +3,7 @@ package server;
 import java.io.*;
 import java.net.*;
 
+
 public class server_main_structure extends Thread {
     ServerSocket serverSocket = null; // 创建服务器端套接字
 
@@ -37,16 +38,21 @@ public class server_main_structure extends Thread {
     public void getServerIP() {
         try {
             InetAddress serverAddress = InetAddress.getLocalHost();
-            byte[] ipAddress = serverAddress.getAddress();
+            Socket s = new Socket("www.google.com", 80);
+            //byte[] ipAddress = serverAddress.getAddress();
+            //String server_ip = (serverAddress.getLocalHost()).grim();
+
 
             server_frame serverFrame = new server_frame();
-            serverFrame.txtServerName.setText(serverAddress.getHostName());
-            serverFrame.txtIP.setText(serverAddress.getHostAddress());
+            serverFrame.txtServerName.setText("Admin's server");
+            serverFrame.txtIP.setText(s.getLocalAddress().getHostAddress());
             serverFrame.txtPort.setText("8888");
 
-            System.out.println("Server IP is:" + (ipAddress[0] & 0xff) + "."
-                    + (ipAddress[1] & 0xff) + "." + (ipAddress[2] & 0xff) + "."
-                    + (ipAddress[3] & 0xff));
+            System.out.println("Server IP is:" + s.getLocalAddress().getHostAddress());
+            s.close();
+         //    System.out.println("Server IP is:" + (ipAddress[0] & 0xff) + "."
+         //           + (ipAddress[1] & 0xff) + "." + (ipAddress[2] & 0xff) + "."
+         //           + (ipAddress[3] & 0xff));
         } catch (Exception e) {
             System.out.println("###Cound not get Server IP." + e);
         }
@@ -54,6 +60,6 @@ public class server_main_structure extends Thread {
 
     // main方法，实例化服务器端程序
     public static void main(String args[]) {
-        new server_main_structure();
+       new server_main_structure();
     }
 }
