@@ -8,7 +8,7 @@ public class server_main_structure extends Thread {
     ServerSocket serverSocket = null; // 创建服务器端套接字
 
     public boolean bServerIsRunning = false;
-    private final int SERVER_PORT = 443;// 定义服务器端口号
+    private final int SERVER_PORT = 8888;// 定义服务器端口号
 
     public server_main_structure() {
         try {
