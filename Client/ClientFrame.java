@@ -107,7 +107,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		frame.setBounds(350, 150, 708, 507);
 		frame.getContentPane().setLayout(null);
 
-		JLabel label = new JLabel("\u5728\u7EBF\u4EBA\u5458\u5217\u8868");
+		JLabel label = new JLabel("Online Users:");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		label.setBounds(10, 31, 147, 30);
@@ -143,7 +143,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		frame.getContentPane().add(listUser);
 		frame.getContentPane().add(spUser);
 
-		butSend = new JButton("\u53D1\u9001");
+		butSend = new JButton("Send");
 		butSend.setForeground(new Color(255, 215, 0));
 		butSend.setBackground(new Color(0, 0, 0));
 		butSend.addActionListener(this);
@@ -152,7 +152,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		butSend.setBounds(586, 373, 85, 30);
 		frame.getContentPane().add(butSend);
 
-		butPic = new JButton("\u56FE\u7247");
+		butPic = new JButton("Image");
 		butPic.addActionListener(this);
 		butPic.setBackground(new Color(0, 0, 0));
 		butPic.setForeground(new Color(255, 215, 0));
@@ -172,7 +172,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 			}
 		});
 
-		butExpression = new JButton("\u8868\u60C5");
+		butExpression = new JButton("Emoji");
 		butExpression.setForeground(new Color(255, 215, 0));
 		butExpression.setBackground(new Color(0, 0, 0));
 		butExpression.setFont(new Font("Times New Roman", Font.BOLD, 13));
@@ -301,7 +301,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 			}
 		});
 
-		butScreenCapture = new JButton("\u622A\u56FE");
+		butScreenCapture = new JButton("Screenshot");
 		butScreenCapture.setForeground(new Color(255, 215, 0));
 		butScreenCapture.setBackground(Color.BLACK);
 		butScreenCapture.setBounds(347, 373, 72, 30);
@@ -333,18 +333,18 @@ public class ClientFrame extends JFrame implements ActionListener {
 		publicChatPanel = new JPanel();
 		publicChatPanel.setBackground(new Color(255, 215, 0));
 		publicChatPanel.setBorder(
-		new TitledBorder(null, "\u7FA4\u804A\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		new TitledBorder(null, "Chatroom", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		publicChatPanel.setBounds(183, 31, 488, 332);
 		frame.getContentPane().add(publicChatPanel);
 
 		editPanel = new JPanel();
 		editPanel.setBorder(
-		new TitledBorder(null, "\u7F16\u8F91\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		new TitledBorder(null, "Text", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		editPanel.setBackground(new Color(255, 215, 0));
 		editPanel.setBounds(183, 408, 488, 53);
 		frame.getContentPane().add(editPanel);
 
-		lblTo = new JLabel("TO\uFF1A");
+		lblTo = new JLabel("TO:");
 		lblTo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		lblTo.setBounds(463, 366, 44, 42);
 		frame.getContentPane().add(lblTo);
