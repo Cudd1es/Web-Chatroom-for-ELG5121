@@ -463,17 +463,20 @@ public class ClientFrame extends JFrame implements ActionListener {
 		frameReg.setVisible(true);
 	}
 
-	void connectServer() {
+	boolean connectServer() {
 		try {
 			socket = new Socket(txtServerIP.getText(), 8888);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8")), true);
+			return socket.isConnected();
 		} catch (ConnectException e) {
 			JOptionPane.showMessageDialog(this, " Failed to connect to server! " + "Exception: " + e, "ERROR", JOptionPane.INFORMATION_MESSAGE);
 			txtServerIP.setText("");
 			System.out.println(e);
+			return socket.isConnected();
 		} catch (Exception e) {
 			System.out.println(e);
+			return socket.isConnected();
 		}
 	}
 
@@ -509,7 +512,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		try {
 			if (obj.equals(btnLogin)) {
 				if ((txtServerIP.getText().length() > 0) && (txtName.getText().length() > 0)) {
-					connectServer();
+					System.out.println("isConnected? "+connectServer());
 					strSend = "login|" + txtName.getText() + "|" + String.valueOf(txtPassword.getPassword());
 					out.println(strSend);
 					initLogin();
