@@ -46,7 +46,7 @@ public class server_main_structure extends Thread {
             server_frame serverFrame = new server_frame();
             serverFrame.txtServerName.setText("Admin's server");
             serverFrame.txtIP.setText(s.getLocalAddress().getHostAddress());
-            serverFrame.txtPort.setText("443");
+            serverFrame.txtPort.setText("8888");
 
             System.out.println("Server IP is:" + s.getLocalAddress().getHostAddress());
             s.close();
