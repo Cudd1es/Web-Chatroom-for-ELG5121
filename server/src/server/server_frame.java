@@ -8,28 +8,22 @@ import javax.swing.*;
 
 // The Server UI.
 public class server_frame extends JFrame implements ActionListener {
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     JTabbedPane tpServer;
 
-    // 服务器信息面板
     JPanel pnlServer, pnlServerInfo;
     JLabel lblNumber, lblServerName, lblIP, lblPort, lblLog;
     JTextField txtNumber, txtServerName, txtIP, txtPort;
     JButton btnStop, btnSaveLog;
     TextArea taLog;
 
-    // 用户信息面板
     JPanel pnlUser;
     JLabel lblUser;
     @SuppressWarnings("rawtypes")
     JList lstUser;
     JScrollPane spUser;
 
-    // 关于本软件
     JPanel pnlAbout;
     JLabel lblVersionNo, lblAbout;
 
@@ -40,7 +34,7 @@ public class server_frame extends JFrame implements ActionListener {
         setSize(510, 510);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        Dimension scr = Toolkit.getDefaultToolkit().getScreenSize();// 在屏幕居中显示
+        Dimension scr = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension fra = this.getSize();
         if (fra.width > scr.width) {
             fra.width = scr.width;
@@ -49,7 +43,7 @@ public class server_frame extends JFrame implements ActionListener {
             fra.height = scr.height;
         }
         this.setLocation((scr.width - fra.width) / 2,
-                (scr.height - fra.height) / 2);
+        (scr.height - fra.height) / 2);
 
         btnStop = new JButton("Close(C)");
         btnStop.addActionListener(new ActionListener() {
@@ -60,7 +54,6 @@ public class server_frame extends JFrame implements ActionListener {
         btnStop.setBackground(Color.DARK_GRAY);
         btnStop.setFont(new Font("Times New Roman", 0, 12));
 
-        // 服务器面板
         pnlServer = new JPanel();
         pnlServer.setLayout(null);
         pnlServer.setBackground(new Color(175, 175, 180));
@@ -95,7 +88,6 @@ public class server_frame extends JFrame implements ActionListener {
         lstUser.setFixedCellWidth(180);
         lstUser.setFixedCellHeight(18);
 
-        // 软件信息
         pnlAbout = new JPanel();
         pnlAbout.setLayout(null);
         pnlAbout.setBackground(new Color(175, 175, 180));
@@ -116,18 +108,16 @@ public class server_frame extends JFrame implements ActionListener {
         pnlAbout.add(lblVersionNo);
         pnlAbout.add(lblAbout);
 
-        // 主标签面板
         tpServer = new JTabbedPane(JTabbedPane.TOP);
         tpServer.setBackground(new Color(100, 125, 125));
         tpServer.setFont(new Font("Times New Roman", 0, 14));
 
-        // 用户面板
         pnlUser = new JPanel();
         pnlUser.setLayout(null);
         pnlUser.setBackground(new Color(175, 175, 180));
         pnlUser.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createTitledBorder(""),
-                BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        BorderFactory.createTitledBorder(""),
+        BorderFactory.createEmptyBorder(1, 1, 1, 1)));
 
         lblUser = new JLabel("[Online Users]");
         lblUser.setFont(new Font("Times New Roman", Font.BOLD, 22));
@@ -143,7 +133,6 @@ public class server_frame extends JFrame implements ActionListener {
         lblUser.setBounds(169, 22, 198, 33);
         spUser.setBounds(169, 65, 298, 362);
 
-        // 服务器信息
         pnlServerInfo = new JPanel(new GridLayout(12, 1));
         pnlServerInfo.setBounds(22, 20, 119, 407);
         pnlUser.add(pnlServerInfo);
@@ -220,7 +209,6 @@ public class server_frame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
     }
 
-    // 服务器窗口
     public static void main(String[] args) {
         new server_frame();
     }
