@@ -70,6 +70,7 @@ public class server_frame extends JFrame implements ActionListener {
         lblLog.setFont(new Font("Times New Roman", Font.BOLD, 15));
         taLog = new TextArea(20, 50);
         taLog.setFont(new Font("Times New Roman", 0, 12));
+        taLog.setForeground(Color.WHITE);
 
         btnSaveLog = new JButton("Save Log(S)");
         btnSaveLog.addActionListener(new ActionListener() {

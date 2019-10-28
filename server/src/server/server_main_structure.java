@@ -28,7 +28,7 @@ public class server_main_structure extends Thread {
             System.out.println("Please kill the process and restart it");
             System.exit(0);
         } catch (IOException e) {
-            System.out.println("[ERROR] Cound not start server." + e);
+            System.out.println("[ERROR] Could not start server." + e);
         }
 
         this.start(); // 启动线程
