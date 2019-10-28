@@ -1,6 +1,6 @@
 //package Client;
 
-public class MiniQQClient {
+public class MiniClient {
 	public static void main(String[] args) {
 		ClientFrame.ClientFrameStarter();
 	}
