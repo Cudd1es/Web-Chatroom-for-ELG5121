@@ -29,10 +29,12 @@ public class ClientTools {
 					rgb = image.getRGB(i, j);
 					pic = pic + i + "," + j + "," + rgb + ",";
 				}
+				System.out.println("i: " + i);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println(pic);
 		return pic;
 	}
 
