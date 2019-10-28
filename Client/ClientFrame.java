@@ -190,7 +190,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		lenghan = new JButton();
 		lenghan.setToolTipText("embarrassed");
 		lenghan.setPreferredSize(new Dimension(32, 32));
-		lenghan.setIcon(new ImageIcon("material\\lenghan.gif"));
+		lenghan.setIcon(new ImageIcon("material/lenghan.gif"));
 		lenghan.addActionListener(this);
 		lenghan.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -203,7 +203,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		fanu = new JButton();
 		fanu.setToolTipText("fanu");
 		fanu.setPreferredSize(new Dimension(32, 32));
-		fanu.setIcon(new ImageIcon("material\\fanu.gif"));
+		fanu.setIcon(new ImageIcon("material/fanu.gif"));
 		fanu.addActionListener(this);
 		fanu.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -216,7 +216,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		zaijian = new JButton();
 		zaijian.setToolTipText("zaijian");
 		zaijian.setPreferredSize(new Dimension(32, 32));
-		zaijian.setIcon(new ImageIcon("material\\zaijian.gif"));
+		zaijian.setIcon(new ImageIcon("material/zaijian.gif"));
 		zaijian.addActionListener(this);
 		zaijian.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -229,7 +229,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		weixiao = new JButton();
 		weixiao.setToolTipText("weixiao");
 		weixiao.setPreferredSize(new Dimension(32, 32));
-		weixiao.setIcon(new ImageIcon("material\\weixiao.gif"));
+		weixiao.setIcon(new ImageIcon("material/weixiao.gif"));
 		weixiao.addActionListener(this);
 		weixiao.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -242,7 +242,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		keai = new JButton();
 		keai.setToolTipText("keai");
 		keai.setPreferredSize(new Dimension(32, 32));
-		keai.setIcon(new ImageIcon("material\\keai.gif"));
+		keai.setIcon(new ImageIcon("material/keai.gif"));
 		keai.addActionListener(this);
 		keai.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -255,7 +255,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		ku = new JButton();
 		ku.setToolTipText("ku");
 		ku.setPreferredSize(new Dimension(32, 32));
-		ku.setIcon(new ImageIcon("material\\ku.gif"));
+		ku.setIcon(new ImageIcon("material/ku.gif"));
 		ku.addActionListener(this);
 		ku.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -576,7 +576,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 							try {
 								String strHead = st.nextToken();
 								String strExpression = st.nextToken();
-								File file = new File("material\\" + strExpression);
+								File file = new File("material/" + strExpression);
 								doc.insertString(doc.getLength(), strHead + "\n", null);
 								ClientTools.insertIcon(file, textArea, doc);
 							} catch (Exception e) {
@@ -600,7 +600,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 							try {
 								String strHead = st.nextToken();
 								String strPicture = st.nextToken();
-								String location = "F:\\pictures\\chat\\send" + System.currentTimeMillis() + ".jpg";
+								String location = "pictures/chat/send" + System.currentTimeMillis() + ".jpg";
 								ClientTools.drawPicture(strPicture, location);
 								File file = new File(location);
 								doc.insertString(doc.getLength(), strHead + "\n", null);
