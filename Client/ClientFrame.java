@@ -69,7 +69,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 
 	JFrame frame;
 	JPanel pnlBack, pnlTalk;
-	JButton butSend, butPic, butExpression;
+	JButton butSend, butPic, butExpression, butOut;
 	JButton lenghan, fanu, zaijian, keai, poqiweixiao, ku, fadai, piezui, weixiao;
 	JTextPane textArea;
 	JTextField inputText;
@@ -94,7 +94,6 @@ public class ClientFrame extends JFrame implements ActionListener {
 	private JPanel publicChatPanel;
 	private JPanel editPanel;
 	private StyledDocument doc = null;
-	private JButton butScreenCapture;
 
 	public ClientFrame() {
 
@@ -303,15 +302,15 @@ public class ClientFrame extends JFrame implements ActionListener {
 			}
 		});
 
-		butScreenCapture = new JButton("Screenshot");
-		butScreenCapture.setForeground(new Color(175, 175, 180));
-		butScreenCapture.setBackground(Color.BLACK);
-		butScreenCapture.setBounds(347, 373, 112, 30);
-		butScreenCapture.setFocusPainted(false);
-		frame.getContentPane().add(butScreenCapture);
-		butScreenCapture.addActionListener(new ActionListener() {
+		butOut = new JButton("Logout");
+		butOut.setForeground(new Color(175, 175, 180));
+		butOut.setBackground(Color.BLACK);
+		butOut.setBounds(347, 373, 112, 30);
+		butOut.setFocusPainted(false);
+		frame.getContentPane().add(butOut);
+		butOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CaptureScreen();
+				//signout();
 			}
 		});
 
