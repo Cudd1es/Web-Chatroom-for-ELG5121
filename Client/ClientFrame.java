@@ -378,7 +378,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		txtServerIP = new JTextField(12);
 		txtName = new JTextField(12);
 		txtPassword = new JPasswordField(12);
-		txtServerIP.setText("192.168.206.1");
+		txtServerIP.setText("192.168.1.2");
 
 		btnLogin = new JButton("Login");
 		btnLogin.setBackground(new Color(0, 0, 0));
