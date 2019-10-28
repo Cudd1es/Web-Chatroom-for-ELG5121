@@ -101,7 +101,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 
 		frame = new JFrame("Chat");
 		frame.setResizable(false);
-		frame.setBackground(new Color(255, 215, 0));
+		frame.setBackground(new Color(175, 175, 180));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBounds(350, 150, 708, 507);
@@ -111,7 +111,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		label.setBounds(10, 31, 147, 30);
-		label.setBackground(Color.BLACK);
+		label.setBackground(new Color(175, 175, 180));
 		label.setForeground(Color.BLACK);
 		label.setVerticalAlignment(SwingConstants.TOP);
 		frame.getContentPane().add(label);
@@ -144,7 +144,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		frame.getContentPane().add(spUser);
 
 		butSend = new JButton("Send");
-		butSend.setForeground(new Color(255, 215, 0));
+		butSend.setForeground(new Color(175, 175, 180));
 		butSend.setBackground(new Color(0, 0, 0));
 		butSend.addActionListener(this);
 		butSend.setFont(new Font("Times New Roman", Font.BOLD, 13));
@@ -155,7 +155,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		butPic = new JButton("Image");
 		butPic.addActionListener(this);
 		butPic.setBackground(new Color(0, 0, 0));
-		butPic.setForeground(new Color(255, 215, 0));
+		butPic.setForeground(new Color(175, 175, 180));
 		butPic.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		butPic.setFocusPainted(false);
 		butPic.setBounds(183, 373, 72, 30);
@@ -173,7 +173,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		});
 
 		butExpression = new JButton("Emoji");
-		butExpression.setForeground(new Color(255, 215, 0));
+		butExpression.setForeground(new Color(175, 175, 180));
 		butExpression.setBackground(new Color(0, 0, 0));
 		butExpression.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		butExpression.setFocusPainted(false);
@@ -302,9 +302,9 @@ public class ClientFrame extends JFrame implements ActionListener {
 		});
 
 		butScreenCapture = new JButton("Screenshot");
-		butScreenCapture.setForeground(new Color(255, 215, 0));
+		butScreenCapture.setForeground(new Color(175, 175, 180));
 		butScreenCapture.setBackground(Color.BLACK);
-		butScreenCapture.setBounds(347, 373, 72, 30);
+		butScreenCapture.setBounds(347, 373, 112, 30);
 		butScreenCapture.setFocusPainted(false);
 		frame.getContentPane().add(butScreenCapture);
 		butScreenCapture.addActionListener(new ActionListener() {
@@ -324,14 +324,14 @@ public class ClientFrame extends JFrame implements ActionListener {
 
 		listOnline = new JComboBox<Object>();
 		listOnline.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		listOnline.setForeground(new Color(255, 215, 0));
+		listOnline.setForeground(new Color(175, 175, 180));
 		listOnline.setBackground(new Color(0, 0, 0));
 		listOnline.setBounds(504, 373, 72, 30);
 		listOnline.addItem("All");
 		frame.getContentPane().add(listOnline);
 
 		publicChatPanel = new JPanel();
-		publicChatPanel.setBackground(new Color(255, 215, 0));
+		publicChatPanel.setBackground(new Color(175, 175, 180));
 		publicChatPanel.setBorder(
 		new TitledBorder(null, "Chatroom", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		publicChatPanel.setBounds(183, 31, 488, 332);
@@ -340,7 +340,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		editPanel = new JPanel();
 		editPanel.setBorder(
 		new TitledBorder(null, "Text", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		editPanel.setBackground(new Color(255, 215, 0));
+		editPanel.setBackground(new Color(175, 175, 180));
 		editPanel.setBounds(183, 408, 488, 53);
 		frame.getContentPane().add(editPanel);
 
@@ -351,15 +351,16 @@ public class ClientFrame extends JFrame implements ActionListener {
 
 		JPanel panel_0 = new JPanel();
 		panel_0.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_0.setBackground(new Color(255, 215, 0));
+		panel_0.setBackground(new Color(175, 175, 180));
 		panel_0.setBounds(10, 10, 147, 458);
 		frame.getContentPane().add(panel_0);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 215, 0));
+		panel_1.setBackground(new Color(175, 175, 180));
 		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_1.setBounds(163, 10, 528, 458);
 		frame.getContentPane().add(panel_1);
+		frame.getRootPane().setDefaultButton(butSend);
 		ShowLoginInterface();
 	}
 
@@ -379,13 +380,13 @@ public class ClientFrame extends JFrame implements ActionListener {
 
 		btnLogin = new JButton("Login");
 		btnLogin.setBackground(new Color(0, 0, 0));
-		btnLogin.setForeground(new Color(255, 215, 0));
+		btnLogin.setForeground(Color.BLACK);
 		btnLogin.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		btnLogin.setFocusPainted(false);
 
 		btnReg = new JButton("Signup");
 		btnReg.setBackground(new Color(0, 0, 0));
-		btnReg.setForeground(new Color(255, 215, 0));
+		btnReg.setForeground(Color.BLACK);
 		btnReg.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		btnReg.setFocusPainted(false);
 
@@ -401,8 +402,8 @@ public class ClientFrame extends JFrame implements ActionListener {
 		dialogLogin.getContentPane().add(txtPassword);
 		dialogLogin.getContentPane().add(btnLogin);
 		dialogLogin.getContentPane().add(btnReg);
-		dialogLogin.setBounds(500, 300, 240, 157);
-		dialogLogin.getContentPane().setBackground(new Color(255, 215, 0));
+		dialogLogin.setBounds(500, 300, 240, 200);
+		dialogLogin.getContentPane().setBackground(new Color(175, 175, 180));
 		dialogLogin.setVisible(true);
 	}
 
@@ -413,7 +414,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		JPasswordField txtRegPassword;
 		JButton btnToReg;
 		GridBagLayout layout;
-		JDialog frameReg = new JDialog(this, "Chat", true);
+		JDialog frameReg = new JDialog(this, "Signup", true);
 		layout = new GridBagLayout();
 
 		pnlReg = new JPanel();
@@ -425,11 +426,11 @@ public class ClientFrame extends JFrame implements ActionListener {
 		txtRegServerIP = new JTextField(12);
 		txtRegName = new JTextField(12);
 		txtRegPassword = new JPasswordField(12);
-		txtRegServerIP.setText("192.168.206.1");
+		txtRegServerIP.setText("192.168.1.2");
 
 		btnToReg = new JButton("Signup");
 		btnToReg.setBackground(new Color(0, 0, 0));
-		btnToReg.setForeground(new Color(255, 215, 0));
+		btnToReg.setForeground(Color.BLACK);
 		btnToReg.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		btnToReg.setFocusPainted(false);
 
@@ -458,8 +459,8 @@ public class ClientFrame extends JFrame implements ActionListener {
 		frameReg.getContentPane().add(lblRegPassword);
 		frameReg.getContentPane().add(txtRegPassword);
 		frameReg.getContentPane().add(btnToReg);
-		frameReg.setBounds(500, 300, 240, 157);
-		frameReg.getContentPane().setBackground(new Color(255, 215, 0));
+		frameReg.setBounds(550, 350, 240, 200);
+		frameReg.getContentPane().setBackground(new Color(175, 175, 180));
 		frameReg.setVisible(true);
 	}
 
