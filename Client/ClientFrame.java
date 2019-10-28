@@ -64,6 +64,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 	JButton btnLogin, btnReg;
 	GridBagLayout layout;
 	Boolean isReg = true;
+	Boolean isLoggedIn = false;
 	JDialog dialogLogin = new JDialog(this, "Login", true);
 
 	JFrame frame;
@@ -96,6 +97,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 	private JButton butScreenCapture;
 
 	public ClientFrame() {
+
 		userList[0] = "admin";
 		listModel.addElement("admin");
 
@@ -492,6 +494,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		if (strKey.equals("login")) {
 			strStatus = st.nextToken();
 			if (strStatus.equals("succeed")) {
+				isLoggedIn = true;
 				btnLogin.setEnabled(false);
 				butSend.setEnabled(true);
 				pnlLogin.setVisible(false);
@@ -513,7 +516,7 @@ public class ClientFrame extends JFrame implements ActionListener {
 		try {
 			if (obj.equals(btnLogin)) {
 				if ((txtServerIP.getText().length() > 0) && (txtName.getText().length() > 0)) {
-					System.out.println("isConnected? "+connectServer());
+					System.out.println("isConnected? " + connectServer());
 					strSend = "login|" + txtName.getText() + "|" + String.valueOf(txtPassword.getPassword());
 					out.println(strSend);
 					initLogin();
@@ -588,8 +591,8 @@ public class ClientFrame extends JFrame implements ActionListener {
 							}
 						} else if (strKey.equals("sendPort")) {
 							try {
-								//								sendPort = Integer.parseInt(st.nextToken());
-								//								sendPort++;
+								// sendPort = Integer.parseInt(st.nextToken());
+								// sendPort++;
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -651,7 +654,13 @@ public class ClientFrame extends JFrame implements ActionListener {
 			public void run() {
 				try {
 					ClientFrame window = new ClientFrame();
-					window.frame.setVisible(true);
+					if (!window.isLoggedIn) {
+						window.setVisible(false); //you can't see me!
+						window.dispose(); //Destroy the JFrame object
+					}
+					else{
+						window.frame.setVisible(true);
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
