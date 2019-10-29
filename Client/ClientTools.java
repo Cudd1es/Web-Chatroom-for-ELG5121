@@ -24,7 +24,6 @@ public class ClientTools {
 			int m = image.getHeight();
 			int n = image.getWidth();
 			pic = m + "," + n + ",";
-			//n
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < m; j++) {
 					rgb = image.getRGB(i, j);

@@ -493,12 +493,12 @@ public class ClientFrame extends JFrame implements ActionListener {
 		if (strKey.equals("login")) {
 			strStatus = st.nextToken();
 			if (strStatus.equals("succeed")) {
-				isLoggedIn = true;
 				btnLogin.setEnabled(false);
 				butSend.setEnabled(true);
 				pnlLogin.setVisible(false);
 				dialogLogin.dispose();
 				new ClientThread(socket);
+				isLoggedIn = true;
 				out.println("init|online");
 			}
 			popWindows(strKey + " " + strStatus + "!", "Login");
